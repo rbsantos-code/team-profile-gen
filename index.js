@@ -34,5 +34,8 @@ function init() {
                     break;
             }
         });
-    }
+    } 
+    addTeam();
 }
+init();
+
