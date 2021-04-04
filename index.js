@@ -35,6 +35,69 @@ function init() {
             }
         });
     } 
+
+    // Manager Section
+    function addManager() {
+        inquirer.prompt([
+            {
+                // Manager name
+                type: 'input',
+                name: 'manager',
+                message: "Please enter manager's name",
+                validate: managerName => {
+                    if (managerName) {
+                        return true;
+                    } else {
+                        console.log('Enter manager name!');
+                        return false;
+                    }
+                }
+            },
+            {
+                // Manager ID 
+                type: 'input',
+                name: 'idManager',
+                message: 'Enter Manager ID',
+                validate: idManager => {
+                    if (idManager) {
+                        return true;
+                    } else {
+                        console.log('Enter manager ID');
+                        return false;
+                    }
+                }
+            },
+            {
+                // Manager Email
+                type: 'input',
+                name: 'emailManager',
+                message: "Enter manager's email",
+                validate: emailManager => {
+                    if (emailManager) {
+                        return true;
+                    } else {
+                        console.log('Enter Email!');
+                        return false;
+                    }
+                }
+            },
+            {
+                // Manager Phone Number
+                type: 'input',
+                name: 'numberManager',
+                message: "Enter manager's phone number",
+                validate: numberManager => {
+                    if (numberManager) {
+                        return true;
+                    } else {
+                        console.log('Enter phone number!');
+                        return false;
+                    }
+                }
+            }
+        ])
+    }
+
     addTeam();
 }
 init();
