@@ -2,8 +2,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const jest = require('jest');
-const { truncate } = require('node:fs');
 
+
+// Constructors needed
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 
 
 // Function Section 

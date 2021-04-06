@@ -24,5 +24,6 @@ test('get role info using function', () => {
     const testRole = 'Intern';
     const intern = new Intern('Diana', 1234, 'intern@yahoo.com', 'bootCamp');
 
+    // use function getRole to overwrite role
     expect(intern.getRole()).toBe(testRole);
 })
