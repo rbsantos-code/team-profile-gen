@@ -51,7 +51,7 @@ const internSection = intern => {
 
 // Export to HTML page
 
-module.exports = profile => {
+function generatePage(profile) {
     const {manager, engineer, intern} = profile;
 
     return `
@@ -94,3 +94,5 @@ module.exports = profile => {
     </html>
     `;
 };
+
+module.exports = generatePage;

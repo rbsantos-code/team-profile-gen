@@ -2,6 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const jest = require('jest');
+const generatePage = require('./src/page-template');
 
 
 // Constructors needed
@@ -27,7 +28,7 @@ function init() {
                 type: 'list',
                 name: 'meetTeam',
                 message: "Who's on the team?",
-                choices: ['Manager', 'Engineer', 'Intern']
+                choices: ['Manager', 'Engineer', 'Intern', 'Create']
             }
         ])
         // Start section depending on choice
@@ -42,6 +43,8 @@ function init() {
                 case 'Intern':
                     addIntern();
                     break;
+                case 'Create':
+                    createHTML();
             }
         });
     } 
@@ -111,6 +114,7 @@ function init() {
             const manager = new Manager(info.manager, info.idManager, info.emailManager, info.numberManager);
             teamMembers.push(manager);
             teamId.push(info.idManager);
+            addTeam();
         })
     }
 
@@ -179,6 +183,7 @@ function init() {
             const engineer = new Engineer(info.engineer, info.engineerId, info.engineerEmail, info.engineerGit);
             teamMembers.push(engineer);
             teamId.push(info.engineerId);
+            addTeam();
         })
     }
 
@@ -247,7 +252,17 @@ function init() {
             const intern = new Intern(info.intern, info.internId, info.internEmail, info.internSchool);
             teamMembers.push(intern);
             teamId.push(info.internId);
+            addTeam();
         })
+    }
+
+    // function to create HTML
+    function createHTML() {
+        fs.writeFile('./index.html', generatePage, err => {
+            if (err) throw new Error(err);
+
+            console.log("Team Profile created!");
+        });
     }
 
     addTeam();
