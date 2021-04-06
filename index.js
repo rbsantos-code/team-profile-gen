@@ -102,6 +102,10 @@ function init() {
                 }
             }
         ])
+        // event after questions
+        .then(info => {
+            const manager = new Manager(info.manager, info.idManager, info.emailManager, info.numberManager);
+        })
     }
 
     // Engineer Section
@@ -164,6 +168,10 @@ function init() {
                 }
             }
         ])
+        // event after answering questions
+        .then(info => {
+            const engineer = new Engineer(info.engineer, info.engineerId, info.engineerEmail, info.engineerGit);
+        })
     }
 
     // Intern Section
@@ -186,7 +194,7 @@ function init() {
             {
                 // Intern ID
                 type: 'input',
-                name: 'internID',
+                name: 'internId',
                 message: 'Enter Intern ID',
                 validate: internID => {
                     if (internID) {
@@ -212,20 +220,24 @@ function init() {
                 }
             },
             {
-                // Intern GitHub section
+                // intern school section
                 type: 'input',
-                name: 'internGit',
-                message: 'Enter Inter GitHub Username',
-                validate: internGitHub => {
-                    if (internGitHub) {
+                name: 'internSchool',
+                message: 'What school did the intern attend?',
+                validate: schoolIntern => {
+                    if (schoolIntern) {
                         return true;
                     } else {
-                        console.log('Enter Intern GitHub username');
+                        console.log('Enter school for intern');
                         return false;
                     }
                 }
             }
         ])
+        // event after answering questions
+        .then(info => {
+            const intern = new Intern(info.intern, info.internId, info.internEmail, info.internSchool);
+        })
     }
 
     addTeam();
