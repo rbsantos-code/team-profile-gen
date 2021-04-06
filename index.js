@@ -10,6 +10,10 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+// Arrays to store info
+const teamMembers = [];
+const teamId = [];
+
 
 // Function Section 
 function init() {
@@ -105,6 +109,8 @@ function init() {
         // event after questions
         .then(info => {
             const manager = new Manager(info.manager, info.idManager, info.emailManager, info.numberManager);
+            teamMembers.push(manager);
+            teamId.push(info.idManager);
         })
     }
 
@@ -171,6 +177,8 @@ function init() {
         // event after answering questions
         .then(info => {
             const engineer = new Engineer(info.engineer, info.engineerId, info.engineerEmail, info.engineerGit);
+            teamMembers.push(engineer);
+            teamId.push(info.engineerId);
         })
     }
 
@@ -237,6 +245,8 @@ function init() {
         // event after answering questions
         .then(info => {
             const intern = new Intern(info.intern, info.internId, info.internEmail, info.internSchool);
+            teamMembers.push(intern);
+            teamId.push(info.internId);
         })
     }
 
