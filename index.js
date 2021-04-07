@@ -138,7 +138,7 @@ function init() {
             {
                 // Engineer ID
                 type: 'input',
-                name: 'EngineerId',
+                name: 'engineerID',
                 message: 'What is the engineer ID?',
                 validate: engineerID => {
                     if (engineerID) {
@@ -180,9 +180,9 @@ function init() {
         ])
         // event after answering questions
         .then(info => {
-            const engineer = new Engineer(info.engineer, info.engineerId, info.engineerEmail, info.engineerGit);
+            const engineer = new Engineer(info.engineer, info.engineerID, info.engineerEmail, info.engineerGit);
             teamMembers.push(engineer);
-            teamId.push(info.engineerId);
+            teamId.push(info.engineerID);
             addTeam();
         })
     }
