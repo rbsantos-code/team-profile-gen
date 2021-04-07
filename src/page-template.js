@@ -43,6 +43,7 @@ const createProfile = profile => {
         </h5>
         <p> ID: ${intern.getID()}</p>
         <p> Email: ${intern.getEmail()}</p>
+        <p> School: ${intern.getSchool()}</p>
     </div>
     `;
   };
