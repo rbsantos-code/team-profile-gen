@@ -1,7 +1,6 @@
-
-
-// Manager profile section
-const managerSection = manager => {
+const createProfile = profile => {
+  // Manager profile section
+  const managerSection = manager => {
     return `
     <div class="col-12 mb-2 bg-dark text-light p-3">
         <h3 class="portfolio-item-title text-light">${manager.getName()}</h3>
@@ -14,11 +13,11 @@ const managerSection = manager => {
         <p> Office Number: ${manager.getPhoneNumber()}</p>
     </div>
     `;
-};
+  };
 
 
-// Engineer profile section
-const engineerSection = engineer => {
+  // Engineer profile section
+  const engineerSection = engineer => {
     return `
     <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
         <h3 class="portfolio-item-title text-light">${engineer.getName()}</h3>
@@ -31,10 +30,10 @@ const engineerSection = engineer => {
         <a href="#" class="btn mt-auto"><i class="fab fa-github mr-2"></i>${engineer.getGitHub()}</a>
     </div>
     `;
-};
+  };
 
-// Intern profile section
-const internSection = intern => {
+  // Intern profile section
+  const internSection = intern => {
     return `
     <div class="col-12 col-md-6 mb-2 bg-dark text-light p-3 flex-column">
         <h3 class="portfolio-item-title text-light">${intern.getName()}</h3>
@@ -46,13 +45,35 @@ const internSection = intern => {
         <p> Email: ${intern.getEmail()}</p>
     </div>
     `;
+  };
+
+  const htmlPage = [];
+
+  htmlPage.push(profile
+    .filter(employee => employee.getRole() === 'Manager')
+    .map(manager => managerSection(manager))
+  );
+
+  htmlPage.push(profile
+    .filter(employee => employee.getRole() === 'Engineer')
+    .map(engineer => engineerSection(engineer))
+    .join('')
+  );
+
+  htmlPage.push(profile
+    .filter(employee => employee.getRole() === 'Intern')
+    .map(intern => internSection(intern))
+    .join('')
+  );
+
+  return htmlPage.join('');
+
 };
 
 
 // Export to HTML page
 
-function generatePage(profile) {
-    const {manager, engineer, intern} = profile;
+module.exports = profile => {
 
     return `
     <!DOCTYPE html>
@@ -81,9 +102,7 @@ function generatePage(profile) {
         <section class="my-3" id="portfolio">
             <h2 class="text-dark bg-primary p-2 display-inline-block">Introducing..</h2>
             <div class="flex-row justify-space-between">
-                ${managerSection(manager)}
-                ${engineerSection(engineer)}
-                ${internSection(intern)}
+                ${createProfile(profile)}
             </div>
         </section>
       </main>
@@ -95,4 +114,4 @@ function generatePage(profile) {
     `;
 };
 
-module.exports = generatePage;
+// module.exports = generatePage;

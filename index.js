@@ -258,7 +258,7 @@ function init() {
 
     // function to create HTML
     function createHTML() {
-        fs.writeFile('./index.html', generatePage, err => {
+        fs.writeFile('./dist/index.html', generatePage(teamMembers), err => {
             if (err) throw new Error(err);
 
             console.log("Team Profile created!");
